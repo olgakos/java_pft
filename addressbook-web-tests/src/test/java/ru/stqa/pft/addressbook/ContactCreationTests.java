@@ -19,6 +19,10 @@ public class ContactCreationTests {
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         //ниже  - это перенесенный сюда залогин
         wd.get("http://localhost/addressbook/");
+        login();
+    }
+
+    private void login() {
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys("admin");
         wd.findElement(By.name("pass")).click();
@@ -30,7 +34,26 @@ public class ContactCreationTests {
     @Test
     public void testContactCreation() throws Exception {
         //раньше тут были строки про залогин.... теперь они выше
-        wd.findElement(By.linkText("add new")).click();
+        GoToContactPage();
+        fillContactForm();
+        submitContactCreation();
+        returnToHomePage();
+        ClickToLogout();
+    }
+
+    private void ClickToLogout() {
+        wd.findElement(By.linkText("Logout")).click();
+    }
+
+    private void returnToHomePage() {
+        wd.findElement(By.linkText("home page")).click();
+    }
+
+    private void submitContactCreation() {
+        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
+
+    private void fillContactForm() {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
         wd.findElement(By.name("firstname")).sendKeys("Daniel");
@@ -62,9 +85,10 @@ public class ContactCreationTests {
         wd.findElement(By.name("email")).click();
         wd.findElement(By.name("email")).clear();
         wd.findElement(By.name("email")).sendKeys("daniel@wb.uk");
-        wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-        wd.findElement(By.linkText("home page")).click();
-        wd.findElement(By.linkText("Logout")).click();
+    }
+
+    private void GoToContactPage() {
+        wd.findElement(By.linkText("add new")).click();
     }
 
     @AfterMethod(alwaysRun = true)
@@ -88,27 +112,27 @@ public class ContactCreationTests {
         }
     }
 
-        private boolean isAlertPresent () {
-            try {
-                wd.switchTo().alert();
-                return true;
-            } catch (NoAlertPresentException e) {
-                return false;
-            }
+    private boolean isAlertPresent() {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
         }
-
-        //private String closeAlertAndGetItsText() {
-        // try {
-        //  Alert alert = driver.switchTo().alert();
-        //  String alertText = alert.getText();
-        //  if (acceptNextAlert) {
-        //    alert.accept();
-        //  } else {
-        //    alert.dismiss();
-        //  }
-        //  return alertText;
-        // } finally {
-        //   acceptNextAlert = true;
-        //}
-        //}
     }
+
+    //private String closeAlertAndGetItsText() {
+    // try {
+    //  Alert alert = driver.switchTo().alert();
+    //  String alertText = alert.getText();
+    //  if (acceptNextAlert) {
+    //    alert.accept();
+    //  } else {
+    //    alert.dismiss();
+    //  }
+    //  return alertText;
+    // } finally {
+    //   acceptNextAlert = true;
+    //}
+    //}
+}
