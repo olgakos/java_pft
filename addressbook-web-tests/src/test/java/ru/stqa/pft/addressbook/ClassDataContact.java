@@ -13,7 +13,7 @@ public class ClassDataContact {
     private final String email1;
 
     //ниже это конструктор который позволяет проинициализировать объект какими-то значениями
-    //и список методов возаращает список атрибутов
+    //список методов возаращает список атрибутов. Атрибуту здесь это FirstName...
     public ClassDataContact(String FirstName, String MiddleName, String LastName, String Nickname, String Company, String Address, String TelHome, String TelMobile, String TelWork, String Email1) {
         firstName = FirstName;
         middleName = MiddleName;
