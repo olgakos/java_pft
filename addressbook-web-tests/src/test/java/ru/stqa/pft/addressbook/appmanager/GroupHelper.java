@@ -1,49 +1,40 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ClassData;
 
-public class GroupHelper {
-    //строка ниже вставлена вручную в АМ убрать ее отсюда? не трогать? (2.7)
-    private FirefoxDriver wd;
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(FirefoxDriver wd) {
-        this.wd = wd;
-            }
+        super(wd);
+    }
     //protected WebDriver wd;
 
     public void returnToGroupPage() {
-        wd.findElement(By.linkText("group page")).click();
-        wd.findElement(By.linkText("Logout")).click();
+        click(By.linkText("group page"));
+        click(By.linkText("Logout"));
     }
 
     public void submitGroupCreation() {
-        wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillGroupForm(ClassData classData) {
-        wd.findElement(By.name("group_name")).click();
-        wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(classData.getName());
-        wd.findElement(By.name("group_header")).click();
-        wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(classData.getHeader());
-        wd.findElement(By.name("group_footer")).click();
-        wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(classData.getFooter());
+        type(By.name("group_name"), classData.getName());
+        type(By.name("group_header"), classData.getHeader());
+        type(By.name("group_footer"), classData.getFooter());
     }
 
     public void initGroupCreation() {
-        wd.findElement(By.name("new")).click();
+        click(By.name("new"));
     }
 
     public void deleteSelectedGroups() {
-      wd.findElement(By.xpath("(//input[@name='delete'])[2]")).click();
+        click(By.xpath("(//input[@name='delete'])[2]"));
     }
 
     public void selectGroup() {
-      wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 }
