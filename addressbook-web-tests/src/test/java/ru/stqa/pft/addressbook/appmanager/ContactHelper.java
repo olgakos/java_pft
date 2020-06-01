@@ -85,4 +85,14 @@ public class ContactHelper extends HelperBase {
       //wd.findElement(By.name("selected[]")).click();
         click(By.name("selected[]"));
     }
+
+    public void initContactModification() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void submitContactModification() {
+        //click(By.name("update"));
+        click(By.xpath("xpath=//input[@name='update'])[2]"));
+
+    }
 }
