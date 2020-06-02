@@ -3,14 +3,15 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelperBase {
     //строка выше про HelperBase -- базовый класс дял всех помощников...
     //строка ниже вставлена вручную в АМ убрать ее отсюда? не трогать? (2.7)
-    protected FirefoxDriver wd;
+    protected WebDriver wd;
 
-    public HelperBase(FirefoxDriver wd) {
+    public HelperBase(WebDriver wd) {
         this.wd = wd;
     }
 
