@@ -73,13 +73,29 @@ public class ContactHelper extends HelperBase {
     }
 
     public void submitContactModification() {
-        //click(By.name("update"));
-        click(By.xpath("xpath=//input[@name='update'])[2]"));
+        //click(By.name("update"));  (локатор СЛОМАЛСЯ)
+        //click(By.xpath("xpath=//input[@name='update'])[2]")); (локатор СЛОМАЛСЯ)
+        click(By.cssSelector("[value=Update]"));
 
     }
 //ниже: это клик на кнопку создания нового контакта "add new" на стр. Home (добавлено в ур.3.9):
 
     public void initContactCreation() {
         click(By.linkText("add new"));
+    }
+
+    public void createContact(ClassDataContact contact, boolean creation) {
+        initContactCreation();
+        fillContactForm(contact);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
+    private void fillContactForm(ClassDataContact contact) {
+    }
+
+    // ниже: соданный  в 3.10 Метод для проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.КОНТАКТЫ)
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
