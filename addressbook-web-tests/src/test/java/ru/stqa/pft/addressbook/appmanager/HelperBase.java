@@ -21,20 +21,27 @@ public class HelperBase {
 
     protected void type(By locator, String text) {
         click(locator);
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-    }
-
-
-    public boolean isElementPresent(By by) {
-        try {
-            wd.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
+        if (text !=null) {
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (! text.equals(existingText)) {
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
         }
+
     }
 
+
+   // public boolean isElementPresent(By by) {
+   //     try {
+   //         wd.findElement(by);
+   //         return true;
+   //     } catch (NoSuchElementException e) {
+    //        return false;
+    //    }
+   // }
+
+    //метод ниже: он позволяет проверить наличие диалоговоро окна. В Силениуме нет, только таким путем
     public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
@@ -42,5 +49,15 @@ public class HelperBase {
         } catch (NoAlertPresentException e) {
             return false;
         }
+    }
+
+    public boolean isElementPresent(By locator){
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
+
     }
 }

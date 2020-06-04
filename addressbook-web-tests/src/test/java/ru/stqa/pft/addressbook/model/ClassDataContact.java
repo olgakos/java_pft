@@ -11,10 +11,11 @@ public class ClassDataContact {
     private final String telMobile;
     private final String telWork;
     private final String email1;
+    private String group;
 
     //ниже это конструктор который позволяет проинициализировать объект какими-то значениями
     //список методов возаращает список атрибутов. Атрибуту здесь это FirstName...
-    public ClassDataContact(String FirstName, String MiddleName, String LastName, String Nickname, String Company, String Address, String TelHome, String TelMobile, String TelWork, String Email1) {
+    public ClassDataContact(String FirstName, String MiddleName, String LastName, String Nickname, String Company, String Address, String TelHome, String TelMobile, String TelWork, String Email1, String group) {
         firstName = FirstName;
         middleName = MiddleName;
         lastName = LastName;
@@ -25,6 +26,7 @@ public class ClassDataContact {
         telMobile = TelMobile;
         telWork = TelWork;
         email1 = Email1;
+        this.group = group;
     }
 
     public String getFirstName() {
@@ -65,5 +67,9 @@ public class ClassDataContact {
 
     public String getEmail1() {
         return email1;
+    }
+
+    public String getGroup() {
+        return group;
     }
 }
