@@ -8,6 +8,10 @@ public class GroupModificationTests extends TestBase {
     @Test
     public void testGroupModification() {
         app.getNavigationHelper().goToGroupPage();
+        //три строки ниже: добавленая в 3.10 ПРОВЕРКА наличия хотя тут хотя бы 1 группы для выполнения модификаций)
+        if (! app.getGroupHelper().isThereAGroup()) {
+            app.getGroupHelper().createGroup(new GroupData("test1", "null", "null"));
+        }
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillGroupForm(new GroupData("Test1", "Test2", "Test3"));

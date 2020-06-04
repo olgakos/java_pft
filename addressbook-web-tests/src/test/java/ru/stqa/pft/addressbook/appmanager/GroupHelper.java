@@ -13,6 +13,7 @@ public class GroupHelper extends HelperBase {
 
     public void returnToGroupPage() {
         click(By.linkText("group page"));
+        //!!! закаменть строку ниже про логаут если падают тесты с группами
         click(By.linkText("Logout"));
     }
 
@@ -54,7 +55,7 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
-// ниже: соданный  в 3.10 Метод лоя проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.Групп)
+// ниже: соданный  в 3.10 Метод для проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.Групп)
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
     }
