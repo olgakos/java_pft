@@ -26,16 +26,17 @@ public class NavigationHelper extends HelperBase{
     // click(By.linkText("groups"));
     //}
 
-//    public void goToContactPage() {
-//        if (isElementPresent(By.id("maintable"))) {
-//            return;
-//        }
-//        click(By.linkText("home"));
-//
-//    }
+    public void gotoHomePage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
 
-    public void goToContactPage() {
-        wd.findElement(By.linkText("add new")).click();
+        click(By.linkText("home"));
+
     }
-    
+
+ //   public void goToContactPage() {
+ //       wd.findElement(By.linkText("add new")).click();
+ //   }
+
 }

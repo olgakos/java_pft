@@ -1,9 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ClassDataContact;
@@ -78,5 +76,10 @@ public class ContactHelper extends HelperBase {
         //click(By.name("update"));
         click(By.xpath("xpath=//input[@name='update'])[2]"));
 
+    }
+//ниже: это клик на кнопку создания нового контакта "add new" на стр. Home (добавлено в ур.3.9):
+
+    public void initContactCreation() {
+        click(By.linkText("add new"));
     }
 }
