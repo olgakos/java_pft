@@ -45,4 +45,17 @@ public class GroupHelper extends HelperBase {
     public void submitGroupModification() {
         click(By.name("update"));
     }
+
+    // ниже: созданный в 3.10 вспомогательынй метод "создание группы"
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+// ниже: соданный  в 3.10 Метод лоя проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.Групп)
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
