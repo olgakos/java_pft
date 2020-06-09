@@ -37,8 +37,9 @@ public class ApplocationManager {
              wd = new InternetExplorerDriver();
         }
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        // где должна быть эта строка ниже? Тут или в SessionHelper (без /group)??
+        // где должна быть эта строка ниже? Тут или в SessionHelper (без /group.php)??
         //wd.get("http://localhost/addressbook/group.php");
+        wd.get("http://localhost/addressbook");
         contactHelper = new ContactHelper(wd);
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
