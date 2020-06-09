@@ -35,8 +35,10 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("(//input[@name='delete'])[2]"));
     }
 
-    public void selectGroup() {
-        click(By.name("selected[]"));
+    public void selectGroup(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
+        //строка выше и int index еще выше - это клик на произвольный элемент "селектед"
+        //click(By.name("selected[]")); ===было ранее
     }
 
     public void initGroupModification() {
