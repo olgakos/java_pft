@@ -14,7 +14,7 @@ public class GroupHelper extends HelperBase {
     public void returnToGroupPage() {
         click(By.linkText("group page"));
         //!!! закаменть строку ниже про логаут если падают тесты с группами
-        click(By.linkText("Logout"));
+        //click(By.linkText("Logout"));
     }
 
     public void submitGroupCreation() {

@@ -14,7 +14,7 @@ public class SessionHepler extends HelperBase {
     }
 
     public void login(String username, String password) {
-        //!! строка ниже - где она должна быть? туту или "http://localhost/addressbook/group.php" в ApplicationManager??
+        //!! строка ниже - где она должна быть? тут или "http://localhost/addressbook/group.php" в ApplicationManager??
         //wd.get("http://localhost/addressbook");
         type(By.name("user"), username);
         type(By.name("pass"), password);
