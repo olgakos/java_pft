@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GroupDeletionTests extends TestBase {
 
-  //ниже это рабочий детс до измеенний в Un4.5
+  //ниже это рабочий тест до измеенний в Un4.5
 //  @Test (enabled = false)
 //  public void testGroupDeletion() throws Exception {
 //    app.getNavigationHelper().goToGroupPage();
@@ -35,6 +35,10 @@ public class GroupDeletionTests extends TestBase {
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() - 1);
+
+    //это из модуля 4.6: спавнение списков groupdata
+    before.remove(before.size() - 1);
+    Assert.assertEquals(before, after);
 
   }
 
