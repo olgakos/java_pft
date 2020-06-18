@@ -55,7 +55,7 @@ public class GroupHelper extends HelperBase {
     }
 
     // ниже: созданный в 3.10 вспомогательынй метод "создание группы"
-    public void createGroup(GroupData group) {
+    public void create(GroupData group) {
         initGroupCreation();
         fillGroupForm(group);
         submitGroupCreation();
@@ -63,11 +63,18 @@ public class GroupHelper extends HelperBase {
     }
 
     //5.2 modifyGroup
-    public void modifyGroup(int index, GroupData group) {
+    public void modify(int index, GroupData group) {
         selectGroup(index);
         initGroupModification();
         fillGroupForm(group);
         submitGroupModification();
+        returnToGroupPage();
+    }
+
+    //5.03
+    public void delete(int index) {
+        selectGroup(index);
+        deleteSelectedGroups();
         returnToGroupPage();
     }
 
@@ -80,15 +87,14 @@ public class GroupHelper extends HelperBase {
        return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<GroupData> getGroupList() {
+    public List<GroupData> list() {
         List<GroupData> groups = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for (WebElement element : elements){
             String name = element.getText();
             //String id = findElement(By.tagName("input")).getAttribute("value");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            GroupData group = new GroupData(id, name, null, null);
-            groups.add(group);
+            groups.add(new GroupData().withId(id).withName(name));
         }
         return groups;
 
