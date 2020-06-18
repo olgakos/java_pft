@@ -1,19 +1,32 @@
 package ru.stqa.pft.addressbook.model;
 
 public class GroupData {
+    private int id;
     private final String name;
     private final String header;
     private final String footer;
 
     public GroupData(String name, String header, String footer) {
+        this.id = 0;
         this.name = name;
         this.header = header;
         this.footer = footer;
     }
 
-    public String getName() {
-        return name;
+    public GroupData(int id, String name, String header, String footer) {
+        this.id = id;
+        this.name = name;
+        this.header = header;
+        this.footer = footer;
     }
+
+    public int getId() { return id;}
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() { return name; }
 
     public String getHeader() {
         return header;
@@ -24,24 +37,29 @@ public class GroupData {
     }
 
     @Override
+    public String toString() {
+        return "GroupData{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    //кусок кода сформированный в 4.8 и вручную пренесенный в конец там же
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         GroupData groupData = (GroupData) o;
 
-        return name.equals(groupData.name);
+        if (id != groupData.id) return false;
+        return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
+    // этого куска в уроке нету вообще, под конец урока 4.8 унесен вниз
     @Override
     public int hashCode() {
-        return name.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return "GroupData{" +
-                "name='" + name + '\'' +
-                '}';
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 }
