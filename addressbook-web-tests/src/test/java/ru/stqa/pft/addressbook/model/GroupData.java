@@ -7,11 +7,13 @@ public class GroupData {
     private final String footer;
 
     public GroupData(String name, String header, String footer) {
-        this.id = 0;
+        //this.id = 0; так было до 4.10 птом стало как ниже "самое большео цлое число"
+        this.id = Integer.MAX_VALUE;
         this.name = name;
         this.header = header;
         this.footer = footer;
     }
+
 
     public GroupData(int id, String name, String header, String footer) {
         this.id = id;
@@ -43,7 +45,6 @@ public class GroupData {
                 '}';
     }
 
-    //кусок кода сформированный в 4.8 и вручную пренесенный в конец там же
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,15 +52,11 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
-        if (id != groupData.id) return false;
         return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
-    // этого куска в уроке нету вообще, под конец урока 4.8 унесен вниз
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return name != null ? name.hashCode() : 0;
     }
 }
