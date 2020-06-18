@@ -7,7 +7,7 @@ import ru.stqa.pft.addressbook.model.ClassDataContact;
 public class ContactCreationTests extends TestBase {
 
 
-    @Test
+    @Test (enabled = false)
     public void testContactCreation() throws Exception {
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().createContact(new ClassDataContact("Daniel", "Jacob", "Radcliffe", "Harry", "WB", "London", "111-11-11", "222-22-22", "333-33-33", "daniel@wb.uk", "test1"), true);
@@ -19,6 +19,9 @@ public class ContactCreationTests extends TestBase {
         //app.getContactHelper().returnToHomePage();
         //!!!с строка ниже закоментена, т.к. из-за нее падалли тесты в 3.10
         //app.getContactHelper().ClickToLogout();
+//4-11
+        //int after = app.getGroupHelper().getContactCount();
+        //Assert.assertEquals(after,before + 1);
 
     }
 

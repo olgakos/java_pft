@@ -62,6 +62,15 @@ public class GroupHelper extends HelperBase {
         returnToGroupPage();
     }
 
+    //5.2 modifyGroup
+    public void modifyGroup(int index, GroupData group) {
+        selectGroup(index);
+        initGroupModification();
+        fillGroupForm(group);
+        submitGroupModification();
+        returnToGroupPage();
+    }
+
 // ниже: соданный  в 3.10 Метод для проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.Групп)
     public boolean isThereAGroup() {
         return isElementPresent(By.name("selected[]"));
@@ -82,6 +91,9 @@ public class GroupHelper extends HelperBase {
             groups.add(group);
         }
         return groups;
+
+        //5.02
+
 
     }
 //4.8 икуст

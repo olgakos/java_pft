@@ -6,7 +6,7 @@ import ru.stqa.pft.addressbook.model.ClassDataContact;
 
 public class ContactModificationTests extends TestBase {
 
-    @Test
+    @Test (enabled = false)
     public void testContactModification() {
         //int before = app.getGroupHelper().getGroupCount();
         app.getNavigationHelper().gotoHomePage();
