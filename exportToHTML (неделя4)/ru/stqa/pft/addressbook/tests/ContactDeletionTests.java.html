@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>ContactDeletionTests.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #0033b3;}
+.s1 { color: #080808;}
+.s2 { color: #067d17;}
+.s3 { color: #8c8c8c; font-style: italic;}
+.ln { color: #adadad; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ContactDeletionTests.java</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">package </span><span class="s1">ru.stqa.pft.addressbook.tests;</span>
+<a name="l2"><span class="ln">2    </span></a>
+<a name="l3"><span class="ln">3    </span></a><span class="s0">import </span><span class="s1">org.testng.annotations.Test;</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s0">import </span><span class="s1">ru.stqa.pft.addressbook.model.ContactData;</span>
+<a name="l5"><span class="ln">5    </span></a>
+<a name="l6"><span class="ln">6    </span></a><span class="s0">public class </span><span class="s1">ContactDeletionTests </span><span class="s0">extends <a href="TestBase.java.html">TestBase</a> </span><span class="s1">{</span>
+<a name="l7"><span class="ln">7    </span></a>
+<a name="l8"><span class="ln">8    </span></a>
+<a name="l9"><span class="ln">9    </span></a>  <span class="s1">@Test (enabled = </span><span class="s0">false</span><span class="s1">)</span>
+<a name="l10"><span class="ln">10   </span></a>  <span class="s0">public void </span><span class="s1">testContactDeletion() </span><span class="s0">throws </span><span class="s1">Exception {</span>
+<a name="l11"><span class="ln">11   </span></a>    <span class="s0">if </span><span class="s1">(!app.getContactHelper().isThereAContact()){</span>
+<a name="l12"><span class="ln">12   </span></a>      <span class="s1">app.getContactHelper().createContact(</span><span class="s0">new </span><span class="s1">ContactData(</span><span class="s2">&quot;Daniel&quot;</span><span class="s1">, </span><span class="s2">&quot;Jacob&quot;</span><span class="s1">, </span><span class="s2">&quot;Radcliffe&quot;</span><span class="s1">, </span><span class="s2">&quot;Harry&quot;</span><span class="s1">, </span><span class="s2">&quot;WB&quot;</span><span class="s1">, </span><span class="s2">&quot;London&quot;</span><span class="s1">, </span><span class="s2">&quot;111-11-11&quot;</span><span class="s1">, </span><span class="s2">&quot;222-22-22&quot;</span><span class="s1">, </span><span class="s2">&quot;333-33-33&quot;</span><span class="s1">, </span><span class="s2">&quot;daniel@wb.uk&quot;</span><span class="s1">, </span><span class="s2">&quot;test1&quot;</span><span class="s1">), </span><span class="s0">true</span><span class="s1">);</span>
+<a name="l13"><span class="ln">13   </span></a>    <span class="s1">}</span>
+<a name="l14"><span class="ln">14   </span></a>    <span class="s1">app.getContactHelper().selectContact();</span>
+<a name="l15"><span class="ln">15   </span></a>    <span class="s1">app.getContactHelper().deleteSelectedContact();</span>
+<a name="l16"><span class="ln">16   </span></a>    <span class="s3">//строка ниже это искусственно вставленная команда закрытия всплывающего окна при удалении контакта</span>
+<a name="l17"><span class="ln">17   </span></a>    <span class="s1">app.getContactHelper().closeAlertfromDelete();</span>
+<a name="l18"><span class="ln">18   </span></a>  <span class="s1">}</span>
+<a name="l19"><span class="ln">19   </span></a>
+<a name="l20"><span class="ln">20   </span></a>
+<a name="l21"><span class="ln">21   </span></a><span class="s1">}</span>
+<a name="l22"><span class="ln">22   </span></a></pre>
+</body>
+</html>

@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.pft.addressbook.model.ClassDataContact;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
     //protected GroupHelper groupHelper;
@@ -30,24 +30,24 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void fillContactForm(ClassDataContact classDataContact, boolean creation) {
-        type(By.name("firstname"),classDataContact.getFirstName());
+    public void fillContactForm(ContactData contactData, boolean creation) {
+        type(By.name("firstname"), contactData.getFirstName());
         //wd.findElement(By.name("firstname")).click();
         //wd.findElement(By.name("firstname")).clear();
         //wd.findElement(By.name("firstname")).sendKeys(classDataContact.getFirstName());
-        type(By.name("middlename"),classDataContact.getMiddleName());
-        type(By.name("lastname"),classDataContact.getLastName());
-        type(By.name("nickname"),classDataContact.getNickname());
-        type(By.name("company"),classDataContact.getCompany());
-        type(By.name("company"),classDataContact.getCompany());
-        type(By.name("home"),classDataContact.getTelHome());
-        type(By.name("mobile"),classDataContact.getTelMobile());
-        type(By.name("work"),classDataContact.getTelWork());
-        type(By.name("email"),classDataContact.getEmail1());
+        type(By.name("middlename"), contactData.getMiddleName());
+        type(By.name("lastname"), contactData.getLastName());
+        type(By.name("nickname"), contactData.getNickname());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("home"), contactData.getTelHome());
+        type(By.name("mobile"), contactData.getTelMobile());
+        type(By.name("work"), contactData.getTelWork());
+        type(By.name("email"), contactData.getEmail1());
 
         //блок ниже: Проверяет наличе или отсутствие выпадающего списка в ContactCreation (true) vs CoctactModif.. (false)
         if (creation) {
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(classDataContact.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -84,18 +84,25 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void createContact(ClassDataContact contact, boolean creation) {
+    public void createContact(ContactData contact, boolean creation) {
         initContactCreation();
         fillContactForm(contact);
         submitContactCreation();
         returnToHomePage();
     }
 
-    private void fillContactForm(ClassDataContact contact) {
+    private void fillContactForm(ContactData contact) {
     }
 
     // ниже: соданный  в 3.10 Метод для проверки НАЛИЧИЯ к-либо элеемнта, у нас чекбокса (на стр.КОНТАКТЫ)
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
+
+    public int getContactCount() {
+        int size = wd.findElements(By.name("selected[]")).size();
+
+        return size;
+    }
+
 }

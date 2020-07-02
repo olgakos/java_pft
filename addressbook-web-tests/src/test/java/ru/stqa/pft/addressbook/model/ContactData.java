@@ -1,6 +1,6 @@
 package ru.stqa.pft.addressbook.model;
 
-public class ClassDataContact {
+public class ContactData {
     private final String firstName;
     private final String middleName;
     private final String lastName;
@@ -15,7 +15,7 @@ public class ClassDataContact {
 
     //ниже это конструктор который позволяет проинициализировать объект какими-то значениями
     //список методов возаращает список атрибутов. Атрибуту здесь это FirstName...
-    public ClassDataContact(String FirstName, String MiddleName, String LastName, String Nickname, String Company, String Address, String TelHome, String TelMobile, String TelWork, String Email1, String group) {
+    public ContactData(String FirstName, String MiddleName, String LastName, String Nickname, String Company, String Address, String TelHome, String TelMobile, String TelWork, String Email1, String group) {
         firstName = FirstName;
         middleName = MiddleName;
         lastName = LastName;
@@ -87,7 +87,7 @@ public class ClassDataContact {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClassDataContact that = (ClassDataContact) o;
+        ContactData that = (ContactData) o;
 
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
