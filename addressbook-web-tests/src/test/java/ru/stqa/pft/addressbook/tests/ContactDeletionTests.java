@@ -14,7 +14,7 @@ public class ContactDeletionTests extends TestBase {
     if (!app.getContactHelper().isThereAContact()){
       app.getContactHelper().createContact(new ContactData("Daniel", "Jacob", "Radcliffe", "Harry", "WB", "London", "111-11-11", "222-22-22", "333-33-33", "daniel@wb.uk", "test1"), true);
     }
-    app.getContactHelper().selectContact();
+    app.getContactHelper().selectContact(before - 1);
     app.getContactHelper().deleteSelectedContact();
     //строка ниже это искусственно вставленная команда закрытия всплывающего окна при удалении контакта
     app.getContactHelper().closeAlertfromDelete();

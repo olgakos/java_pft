@@ -2,9 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase {
     //protected GroupHelper groupHelper;
@@ -63,8 +67,9 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void selectContact() {
-      //wd.findElement(By.name("selected[]")).click();
+    //  этот кусок ниже был изменен в 4.4, связано с выбором ПОСЛЕДНЕГО а не первого в спсике контакта.
+    public void selectContact(int index) {
+      wd.findElements(By.name("selected[]")).get(index).click();
         click(By.name("selected[]"));
     }
 
@@ -105,4 +110,15 @@ public class ContactHelper extends HelperBase {
         return size;
     }
 
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        //List<WebElement> elements = (By.name("entry"));
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String name = element.getText();
+            ContactData contact = new ContactData(FirstName, LastName);
+            contacts.add(contact);
+        }
+        return contacts;
+    }
 }

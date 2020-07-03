@@ -15,7 +15,7 @@ public class ContactModificationTests extends TestBase {
         if (!app.getContactHelper().isThereAContact()){
             app.getContactHelper().createContact(new ContactData("Daniel", "Jacob", "Radcliffe", "Harry", "WB", "London", "111-11-11", "222-22-22", "333-33-33", "daniel@wb.uk", "test1"), true);
         }
-        //app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillContactForm(new ContactData("Daniel1", "Jacob1", "Radcliffe1", "Harry", "WB", "London", "111-11-11", "222-22-22", "333-33-33", "daniel@wb.uk", null), false);
         app.getContactHelper().submitContactModification();
@@ -24,6 +24,7 @@ public class ContactModificationTests extends TestBase {
         int after = app.getContactHelper().getContactCount();
         Assert.assertEquals(after, before);
          //Важно!! строка ниже (логаут) убрана в ходе выпослнения задания №9. Не знаю, куда приткнуть.
+        //логаут в этих тестах сейчас не важен
         //app.getContactHelper().ClickToLogout();
     }
 }
